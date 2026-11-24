@@ -1,0 +1,38 @@
+flowchart TB
+    subgraph Client["Client Devices (Mobile & Desktop Browsers)"]
+        PWA["React + TypeScript SPA"]
+        MIC["Browser Microphone (Web Speech API)"]
+        GPS["Browser Geolocation API"]
+    end
+
+    subgraph Edge["Frontend Hosting (Proposed)"]
+        VER["Vercel Edge Network (Static Assets & SPA)"]
+    end
+
+    subgraph BackendHost["Backend Hosting (Proposed)"]
+        REN["Render Web Service (Python FastAPI + Matching Engine)"]
+    end
+
+    subgraph Firebase["Firebase Services (Proposed)"]
+        FAUTH["Firebase Authentication (Phone OTP)"]
+        FDB["Cloud Firestore (NoSQL Document DB)"]
+    end
+
+    subgraph AWS["AWS Cloud Architecture (Proposed Future Integration)"]
+        APIGW["Amazon API Gateway"]
+        LAMBDA["AWS Lambda (Async Notifications & Batch Scoring)"]
+        S3["Amazon S3 (Voice Clips & Verification Docs)"]
+        CW["Amazon CloudWatch (Logs, Metrics & Alarms)"]
+    end
+
+    PWA <-->|HTTPS| VER
+    MIC --> PWA
+    GPS --> PWA
+    PWA <-->|Auth Tokens| FAUTH
+    PWA <-->|REST API| APIGW
+    APIGW <-->|Routes| REN
+    REN <-->|CRUD & Queries| FDB
+    REN -.->|Async Events| LAMBDA
+    REN -.->|Media Upload| S3
+    REN -.->|Telemetry| CW
+    LAMBDA -.->|Logs| CW

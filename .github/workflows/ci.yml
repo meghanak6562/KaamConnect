@@ -1,0 +1,33 @@
+name: KaamConnect CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verify-poc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install proof-of-concept dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run Python syntax checks
+        run: |
+          python -m py_compile poc/matching_engine.py poc/test_matching.py
+
+      - name: Run unit tests with pytest
+        run: |
+          python -m pytest -v poc/test_matching.py

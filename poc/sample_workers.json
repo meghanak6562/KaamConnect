@@ -1,0 +1,68 @@
+[
+  {
+    "worker_id": "w_101",
+    "full_name": "Ramesh Kumar",
+    "profession": "electrician",
+    "skills": ["wiring", "mcb_repair", "inverter_install", "fan_fitting"],
+    "experience": 5,
+    "expected_wage": 700,
+    "availability": "available",
+    "latitude": 13.3379,
+    "longitude": 77.1173
+  },
+  {
+    "worker_id": "w_102",
+    "full_name": "Manjunath Gowda",
+    "profession": "electrician",
+    "skills": ["wiring", "earthing"],
+    "experience": 2,
+    "expected_wage": 650,
+    "availability": "busy",
+    "latitude": 13.3455,
+    "longitude": 77.1250
+  },
+  {
+    "worker_id": "w_103",
+    "full_name": "Suresh Babu",
+    "profession": "plumber",
+    "skills": ["pipe_fitting", "tap_repair", "tank_cleaning"],
+    "experience": 7,
+    "expected_wage": 750,
+    "availability": "available",
+    "latitude": 13.3390,
+    "longitude": 77.1190
+  },
+  {
+    "worker_id": "w_104",
+    "full_name": "Imran Pasha",
+    "profession": "carpenter",
+    "skills": ["door_fitting", "furniture_repair", "wood_polishing"],
+    "experience": 4,
+    "expected_wage": 800,
+    "availability": "available",
+    "latitude": 13.3520,
+    "longitude": 77.1310
+  },
+  {
+    "worker_id": "w_105",
+    "full_name": "Venkatesh Naik",
+    "profession": "mason",
+    "skills": ["brickwork", "plastering", "tiling"],
+    "experience": 6,
+    "expected_wage": 850,
+    "availability": "unavailable",
+    "latitude": 13.3360,
+    "longitude": 77.1150
+  },
+  {
+    "worker_id": "w_106",
+    "full_name": "Kiran Shetty",
+    "profession": "electrician",
+    "skills": ["wiring", "mcb_repair", "motor_winding"],
+    "experience": 8,
+    "expected_wage": 900,
+    "availability": "available",
+    "latitude": 13.4800,
+    "longitude": 77.2100
+  }
+]

@@ -1,0 +1,61 @@
+flowchart TB
+    subgraph L1["Layer 1: User Interface (Proposed)"]
+        WUI["Worker Web App (React.js + TypeScript + Tailwind CSS)"]
+        EUI["Employer Web App (React.js + TypeScript + Tailwind CSS)"]
+    end
+
+    subgraph L2["Layer 2: Accessibility & Voice Layer (Proposed)"]
+        WSA["Web Speech API (Browser STT - Kannada, Hindi, English)"]
+        NLU["Query Intent & Skill/Radius Parser"]
+        EL["ElevenLabs Audio AI (Future Voice Output / TTS)"]
+    end
+
+    subgraph L3["Layer 3: Application Backend (Proposed)"]
+        GW["Amazon API Gateway / HTTPS Reverse Proxy"]
+        API["Python FastAPI Service (REST Endpoints & Validation)"]
+        AUTH["Firebase Authentication (Phone OTP / JWT)"]
+    end
+
+    subgraph L4["Layer 4: Matching Engine (Core Logic - POC Implemented)"]
+        SE["Skill Compatibility Scorer (40%)"]
+        GEO["Haversine Distance Calculator (30%)"]
+        AV["Availability & Schedule Filter (15%)"]
+        EXP["Experience & Wage Scorer (10% + 5%)"]
+        RANK["Weighted Composite Ranker & Explainer"]
+    end
+
+    subgraph L5["Layer 5: Database & Storage (Proposed)"]
+        FS["Firebase Firestore (users, workers, employers, jobs, applications)"]
+        S3["Amazon S3 (Future Media / Audio / Document Storage)"]
+    end
+
+    subgraph L6["Layer 6: Cloud & Deployment (Proposed)"]
+        VER["Vercel (Frontend Hosting)"]
+        REN["Render (FastAPI Backend Hosting)"]
+        LAM["AWS Lambda (Future Serverless Async Tasks)"]
+        CW["Amazon CloudWatch (Future Logs & Metrics)"]
+    end
+
+    WUI -->|Voice Input| WSA
+    WSA -->|Transcript| NLU
+    NLU -->|Structured Query| API
+    WUI -->|HTTPS REST| GW
+    EUI -->|HTTPS REST| GW
+    GW --> API
+    API <-->|Verify Token| AUTH
+    API <-->|Read/Write Records| FS
+    API -->|Candidate & Job Data| SE
+    API -->|Coordinates| GEO
+    API -->|Status| AV
+    API -->|Years & Wage| EXP
+    SE --> RANK
+    GEO --> RANK
+    AV --> RANK
+    EXP --> RANK
+    RANK -->|Ranked Matches + Reasons| API
+    API -.->|Optional TTS| EL
+    WUI -.->|Hosted on| VER
+    API -.->|Hosted on| REN
+    API -.->|Future Media| S3
+    FS -.->|Future Events| LAM
+    API -.->|Future Telemetry| CW

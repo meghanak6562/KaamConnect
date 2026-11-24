@@ -1,0 +1,21 @@
+flowchart LR
+    U["User (Worker / Employer)"] -->|1. Registration Payload| API["FastAPI Backend"]
+    API -->|Store User Profile| DB[("Firebase Firestore")]
+
+    W["Worker"] -->|2. Skills, Wage, Availability| API
+    W -->|4. GPS / Manual Location| API
+    E["Employer"] -->|3. Job Posting & Required Skills| API
+
+    API -->|5. Validate & Normalize| ME["Matching Engine"]
+    DB -->|7. Fetch Active Workers & Open Jobs| ME
+
+    ME -->|6. Score: Skill + Haversine + Availability + Experience + Wage| ME
+    ME -->|8. Ranked Results + Explanations| API
+    API -->|JSON Response| U
+
+    W -->|9. Submit Application| API
+    API -->|Persist Application| DB
+    DB -->|Notify New Application| E
+    E -->|10. Accept / Reject Response| API
+    API -->|Update Application Status| DB
+    API -->|Notify Worker| W

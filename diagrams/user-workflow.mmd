@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph Worker["Worker Flow"]
+        W_START(["START"]) --> W_OPEN["Open KaamConnect"]
+        W_OPEN --> W_REG["Register with Phone & Language"]
+        W_REG --> W_SKILL["Select Skills, Wage & Availability"]
+        W_SKILL --> W_LOC{"Location Permission Granted?"}
+        W_LOC -->|Yes| W_GPS["Capture GPS Coordinates"]
+        W_LOC -->|No| W_MANUAL["Enter Town / Pincode Manually"]
+        W_GPS --> W_SEARCH["Search Jobs (Text or Voice)"]
+        W_MANUAL --> W_SEARCH
+        W_SEARCH --> W_MATCH["Matching Engine Evaluates Nearby Jobs"]
+        W_MATCH --> W_FOUND{"Suitable Jobs Found?"}
+        W_FOUND -->|No| W_EXPAND["Suggest Expanding Radius or Updating Skills"]
+        W_EXPAND --> W_SEARCH
+        W_FOUND -->|Yes| W_DISP["Display Ranked Nearby Jobs"]
+        W_DISP --> W_SEL["Select Job & Review Details"]
+        W_SEL --> W_AVAIL{"Worker Still Available?"}
+        W_AVAIL -->|No| W_END(["END"])
+        W_AVAIL -->|Yes| W_APPLY["Submit Application"]
+        W_APPLY --> W_STATUS{"Application Accepted?"}
+        W_STATUS -->|Accepted| W_CONTACT["Contact Employer Directly"]
+        W_STATUS -->|Rejected / Pending| W_DISP
+        W_CONTACT --> W_END
+    end
+
+    subgraph Employer["Employer Flow"]
+        E_START(["START"]) --> E_REG["Register"]
+        E_REG --> E_PROF["Create Employer Profile"]
+        E_PROF --> E_POST["Post Job"]
+        E_POST --> E_SKILLS["Enter Required Skills & Offered Wage"]
+        E_SKILLS --> E_LOC{"Location Permission Granted?"}
+        E_LOC -->|Yes| E_GPS["Auto-Detect Job Site Coordinates"]
+        E_LOC -->|No| E_PIN["Pin Job Location Manually"]
+        E_GPS --> E_MATCH["Matching Engine Scores Nearby Workers"]
+        E_PIN --> E_MATCH
+        E_MATCH --> E_FOUND{"Matching Workers Available?"}
+        E_FOUND -->|No| E_WAIT["Keep Listing Open & Notify Nearby"]
+        E_FOUND -->|Yes| E_DISP["Display Ranked Nearby Workers"]
+        E_DISP --> E_REV["Review Applications"]
+        E_REV --> E_DEC{"Accept Worker?"}
+        E_DEC -->|Yes| E_SEL["Select Worker & Share Contact"]
+        E_DEC -->|No| E_REV
+        E_SEL --> E_END(["END"])
+        E_WAIT --> E_END
+    end

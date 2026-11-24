@@ -1,0 +1,13 @@
+flowchart TD
+    A["USER INPUT (Voice or Text)"] --> B["WORKER / EMPLOYER REQUEST"]
+    B --> C["VOICE OR TEXT PROCESSING (Web Speech API / Input Form)"]
+    C --> D["SKILL EXTRACTION (Keyword & Synonym Normalization)"]
+    D --> E["LOCATION RETRIEVAL (Browser Geolocation / Pincode Fallback)"]
+    E --> F["BACKEND API (FastAPI Request Validation)"]
+    F --> G["DATABASE QUERY (Fetch Candidate Records from Firestore)"]
+    G --> H["SKILL MATCHING (Jaccard / Overlap Score - 40%)"]
+    H --> I["DISTANCE CALCULATION (Haversine Formula - 30%)"]
+    I --> J["MATCH SCORING (Availability 15% + Experience 10% + Wage 5%)"]
+    J --> K["RESULT RANKING (Sort Descending by Total Score)"]
+    K --> L["NEARBY JOB / WORKER RESULTS (With Match Reasons)"]
+    L --> M["APPLICATION / CONTACT (Apply or Shortlist Candidate)"]

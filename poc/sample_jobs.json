@@ -1,0 +1,42 @@
+[
+  {
+    "job_id": "j_201",
+    "title": "Residential Rewiring & MCB Board Repair",
+    "required_skills": ["wiring", "mcb_repair"],
+    "min_experience": 2,
+    "offered_wage": 750,
+    "latitude": 13.3420,
+    "longitude": 77.1210,
+    "job_status": "open"
+  },
+  {
+    "job_id": "j_202",
+    "title": "Bathroom Pipe Fitting & Tap Replacement",
+    "required_skills": ["pipe_fitting", "tap_repair"],
+    "min_experience": 3,
+    "offered_wage": 750,
+    "latitude": 13.3405,
+    "longitude": 77.1180,
+    "job_status": "open"
+  },
+  {
+    "job_id": "j_203",
+    "title": "Shop Main Door Fitting & Wood Polish",
+    "required_skills": ["door_fitting", "wood_polishing"],
+    "min_experience": 2,
+    "offered_wage": 800,
+    "latitude": 13.3500,
+    "longitude": 77.1290,
+    "job_status": "open"
+  },
+  {
+    "job_id": "j_204",
+    "title": "Compound Wall Plastering",
+    "required_skills": ["brickwork", "plastering"],
+    "min_experience": 3,
+    "offered_wage": 850,
+    "latitude": 13.3370,
+    "longitude": 77.1160,
+    "job_status": "open"
+  }
+]
